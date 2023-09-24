@@ -7,14 +7,14 @@ using UnityEngine.UI;
 
 public class GameTimer : MonoBehaviour
 {
-    public float timeFloat;
+    public float timeFloat = 15.0f;     //カウントダウンタイマー（これをそのまま表示）
     public TextMeshProUGUI timeText;
-    GameGameOver ggo;
+    GameOver gameover;
     
     // Start is called before the first frame update
     void Start()
     {
-        timeFloat = 15.0f;
+        
     }
 
     //Time.scale = 0で停止
@@ -26,8 +26,8 @@ public class GameTimer : MonoBehaviour
         if (timeFloat < 0)
         {
             Debug.Log("gameover");
-            ggo = GameObject.Find("OreoGameOver").GetComponent<GameGameOver>();
-            ggo.Gameover();
+            gameover = GameObject.Find("OreoGameOver").GetComponent<GameOver>();
+            gameover.Gameover();
         }
     }
 
@@ -37,6 +37,7 @@ public class GameTimer : MonoBehaviour
         if (timeFloat < 0)
         {
             Time.timeScale = 0;
+            timeFloat = 0;
         }
     }
 }

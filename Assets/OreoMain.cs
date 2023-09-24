@@ -12,11 +12,19 @@ public class OreoMain : MonoBehaviour
     List<GameObject> arrowObj = new();
     OreoGenerate generate;
     OreoControll controll;
-    float time = 0f;
+    GameTimer gameTimer;
+    float restTime = 0f;        //再生成の時間を計る
 
     // Start is called before the first frame update
     void Start()
     {
+        //timescaleを1.0にセット
+        Time.timeScale = 1.0f;
+
+        //gametimerをリセット
+        gameTimer = GameObject.Find("Timer").GetComponent<GameTimer>();
+        gameTimer.timeFloat = 15.0f;
+
         //oreo generate
         generate = GameObject.Find("Oreo_generate").GetComponent<OreoGenerate>();
         generate.Oreo(oreoList, oreoObj);
@@ -28,23 +36,25 @@ public class OreoMain : MonoBehaviour
     }
 
     // Update is called once per frame
-    void FixedUpdate()
+    void Update()
     {
-        controll.GameControll(oreoList, oreoObj, arrowObj);
-        //Debug.Log(time);
+        if (oreoList.Count != 0 && gameTimer.timeFloat > 0)
+        {
+            //操作受付
+            controll.GameControll(oreoList, oreoObj, arrowObj);
+        }
 
         //再生成
         //0.5秒待機してから生成
         if (oreoList.Count == 0)
         {
-            time += Time.deltaTime;
+            restTime += Time.deltaTime;
         }
 
-        if (time >= 0.5f)
+        if (restTime >= 0.5f)
         {
-            time -= 1f;
             generate.ReGenerate(oreoList, oreoObj, arrowObj);
-            time = 0;
+            restTime = 0f;
         }
     }
 }

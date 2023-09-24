@@ -1041,7 +1041,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 50cc25c127175c844ae96f931217c4af, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timeFloat: 0
+  timeFloat: 15
   timeText: {fileID: 1597145308}
 --- !u!1 &1954713148
 GameObject:
@@ -1158,6 +1158,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   canvas: {fileID: 1034390953}
   gameoverText: {fileID: 523183587987152944, guid: a6ce0cfa0edda194891fd76885aa36a7, type: 3}
+  gameoverScreen: {fileID: 9020521309141817665, guid: 6c345661372d96347920fd8673a1d4ef, type: 3}
+  gameoverButton: {fileID: 4753021914317473056, guid: 245eee4cc06184642986c2cd28b71f87, type: 3}
 --- !u!4 &2058288926
 Transform:
   m_ObjectHideFlags: 0
